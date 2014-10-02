@@ -1,0 +1,90 @@
+<html>
+<head>
+  <link rel="stylesheet" href="http://v.zhu.land/lib/mydiv.css"/>
+  <style>
+  body {
+  font:10px sans-serif;
+  }
+
+
+
+th {
+    font: bold 11px "Trebuchet MS", Verdana, Arial, Helvetica,
+    sans-serif;
+    color: #6D929B;
+    border-right: 1px solid #C1DAD7;
+    border-bottom: 1px solid #C1DAD7;
+    border-top: 1px solid #C1DAD7;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    text-align: left;
+    padding: 6px 6px 6px 12px;
+    background: #CAE8EA url(images/bg_header.jpg) no-repeat;
+}
+
+th.nobg {
+    border-top: 0;
+    border-left: 0;
+    border-right: 1px solid #C1DAD7;
+    background: none;
+}
+
+td {
+    border-right: 1px solid #C1DAD7;
+    border-bottom: 1px solid #C1DAD7;
+    background: #fff;
+    padding: 6px 6px 6px 12px;
+    color: #6D929B;
+}
+
+
+td.alt {
+    background: #F5FAFA;
+    color: #B4AA9D;
+}
+</style>
+
+  <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+  <script src="http://ajax.bam2x.net/bam2x.js/lib/bam2x.rvennpie.js"></script>
+</head>
+<body>
+ <div id="canvas" class="myDiv" >
+<div id="tab1" style="float:left; width:400px; padding: 20px ; border: 2px">
+</div>
+<div id="tab2" style="float:left; width:400px; padding: 20px ; border: 2px">
+</div>
+</div>
+
+
+<script>
+
+var data = {
+    "gene": {
+        "utr3_and_utr5": 794692, 
+        "utr5": 30336031, 
+        "intron": 17557911, 
+        "utr3": 5255583, 
+        "exon": 53705468, 
+        "intron_and_exon": 13698125, 
+        "total": 57565254
+    }, 
+    "total": 65893258, 
+    "intergenic": {
+        "down": 424701, 
+        "total": 8328004, 
+        "up": 1266138, 
+        "up_and_down": 167963
+    }, 
+    "title": "sample.out"
+};
+
+console.log(bam2x);
+var pie=new bam2x.RVennPie(data);
+console.log(pie);
+pie.render1(d3.select("#tab1"));
+pie.render2(d3.select("#tab2"));
+</script>
+</body>
+
+
+</html>
