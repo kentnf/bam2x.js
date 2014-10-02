@@ -1,0 +1,152 @@
+<!DOCTYPE HTML>
+<head>
+  <meta charset="utf-8">
+  <title>venn pie demo</title>
+  <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+  <script src="http://ajax.bam2x.net/bam2x.js/lib/bam2x.vennpie.js" charset="utf-8"></script>
+  <style>
+  body {
+  font:10px sans-serif;
+  }
+
+
+th {
+    font: bold 11px "Trebuchet MS", Verdana, Arial, Helvetica,
+    sans-serif;
+    color: #6D929B;
+    border-right: 1px solid #C1DAD7;
+    border-bottom: 1px solid #C1DAD7;
+    border-top: 1px solid #C1DAD7;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    text-align: left;
+    padding: 6px 6px 6px 12px;
+    background: #CAE8EA url(images/bg_header.jpg) no-repeat;
+}
+
+th.nobg {
+    border-top: 0;
+    border-left: 0;
+    border-right: 1px solid #C1DAD7;
+    background: none;
+}
+
+td {
+    border-right: 1px solid #C1DAD7;
+    border-bottom: 1px solid #C1DAD7;
+    background: #fff;
+    padding: 6px 6px 6px 12px;
+    color: #6D929B;
+}
+
+
+td.alt {
+    background: #F5FAFA;
+    color: #B4AA9D;
+}
+
+  </style>
+</head>
+<body>
+<div style="background-color:aliceblue">
+<button onclick="plot_table()">Plot</button>
+<button onclick="plot_random()">Plot a Random Example</button>
+<button onclick="clearCanvas()">Clear</button>
+
+<table>
+<tr>
+<td>
+|A|
+</td>
+<td>
+<input type="number" id="A">
+</td>
+</tr>
+<tr>
+<td>
+|B|
+</td>
+<td>
+<input type="number" id="B">
+</td>
+</tr>
+<tr>
+<td>
+|A&#8745B|
+</td>
+<td>
+<input type="number" id="A_AND_B">
+</td>
+</tr>
+<tr>
+<td>
+Total
+</td>
+<td>
+<input type="number" id="TOTAL">
+</td>
+</tr>
+<tr>
+<td>
+Label of Set A
+</td>
+<td>
+<input id="LABEL_A" placeholder="Exon">
+</td>
+</tr>
+<tr>
+<td>
+Label of Set B
+</td>
+<td>
+<input id="LABEL_B" placeholder="Intron">
+</td>
+</tr>
+
+
+
+</table>
+
+
+
+
+</div>
+
+<div id="canvas" align="center">
+</div>
+</body>
+<script>
+function clearCanvas()
+    {
+        d3.select("#canvas").text('')
+    }
+
+function plot_random() {
+var a = Math.floor(Math.random()*1000);
+var b = Math.floor(Math.random()*800);
+var a_and_b = Math.floor( Math.random()*Math.min(a,b))
+var total = a+b-a_and_b+Math.floor(Math.random()*400)
+labels=["EXON","INTRON"]
+var pie= new bam2x.vennpie([a,b,a_and_b,total],labels,d3.select("#canvas").append("div").style("float","left").style("width","300px"))
+pie.render();
+}
+
+
+function plot_table() {
+var a = parseInt(document.getElementById('A').value);
+var b = parseInt(document.getElementById('B').value);
+var a_and_b = parseInt(document.getElementById('A_AND_B').value);
+var total = parseInt(document.getElementById('TOTAL').value);
+var la = document.getElementById('LABEL_A').value || document.getElementById('LABEL_A').placeholder;
+var lb = document.getElementById('LABEL_B').value || document.getElementById('LABEL_B').placeholder;
+clearCanvas();
+var pie= new bam2x.vennpie([a,b,a_and_b,total],[la,lb],d3.select("#canvas").append("div").style("float","left").style("width","300px"))
+pie.render();
+}
+
+
+
+
+window.onload=function() { plot_random() }
+
+</script>

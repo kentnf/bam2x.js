@@ -1,0 +1,60 @@
+<!DOCTYPE HTML>
+<body>
+<div id="figure" class="myDiv">
+<h2> FIGURE </h2>
+<div id="canvas">
+</div>
+</div>
+</body>
+<script src="http://d3js.org/d3.v3.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script src="http://ajax.bam2x.net/bam2x.js/lib/bam2x.circos.js"></script>
+<script>
+  $(document).ready(function(C) {   
+      var svg = d3.select("#canvas").append("svg").attr("width",500).attr("height",500);
+      var ideogram1 = new bam2x.circos.IdeogramModel({"id":"lnc1","length":18,"color":"blue"});
+	  /*
+	  var ideogram_v = new bam2x.circos.IdeogramView({model:ideogram1,startAngle:0,endAngle:6.28,innerRadius:80,outerRadius:90,el:svg.append("g"),cx:100,cy:100})
+	  console.log(ideogram_v);
+	  ideogram_v.render();
+     */
+      var ideogram2 = new bam2x.circos.IdeogramModel({"id":"lnc2","length":20,"color":"green"});
+      var ideogram3 = new bam2x.circos.IdeogramModel({"id":"lnc3","length":30,"color":"yellow"});
+      var collection=[ideogram1,ideogram2,ideogram3];
+      var ideogramTrack = new bam2x.circos.IdeogramTrack({"collection":collection,"el":svg.append("g"),"cx":200,"cy":200,"outerRadius":150,"innerRadius":140,"gapAngle":0.02});
+      ideogramTrack.render(true);
+
+
+      var bed1= new bam2x.circos.BedModel({"chr":"lnc1","start":2,"end":5,"id":"Rfam1.1","color":"blue"}); 
+      var bed2= new bam2x.circos.BedModel({"chr":"lnc2","start":2,"end":6,"id":"Rfam1.2","color":"blue"}); 
+      var bed3= new C.BedModel({"chr":"lnc3","start":7,"end":17,"id":"Rfam1.3","color":"green"}); 
+      var bed4= new C.BedModel({"chr":"lnc3","start":27,"end":30,"id":"Rfam1.4","color":"aliceblue"}); 
+      
+      var bedsCollection=[bed1,bed2,bed3,bed4]
+      var bedTrack = new C.BedTrack({"collection":bedsCollection,"el":svg.append("g"),"cx":200,"cy":200,'outerRadius':65,'innerRadius':60});
+      bedTrack.render(ideogramTrack);
+   
+      var plot1=new C.PlotModel({"chr":"lnc1","values":new Array(9,-9,8,-8,7,-7,6,-6,5,-5,4,-4,3,-3,2,-2,1,-1)});
+      var plot3=new C.PlotModel({"color":"red","chr":"lnc3","values":new Array(9,-9,8,-8,7,-7,6,-6,5,-5,4,-4,3,-3,2,-2,1,-1)});
+      var plot2=new C.PlotModel({"color":"blue","chr":"lnc2","values":new Array(6,-6,5,-5,4,-4,3,-3,2,-2,1,-1)});
+      var plotsCollection= [plot2,plot1,plot3];
+      var plotTrack = new C.PlotTrack({"collection":plotsCollection,"el":svg.append("g"),"cx":200,"cy":200,'outerRadius':95,'innerRadius':70});
+      plotTrack.render(ideogramTrack);
+     
+      
+      var link1 = new C.LinkModel({"source":bed1,"target":bed2});
+      var link2 = new C.LinkModel({"source":bed3,"target":bed4});
+      var linksCollection = [link1,link2]
+      var linkTrack = new C.LinkTrack({"collection":linksCollection,"el":svg.append("g"),"cx":200,"cy":200,'radius':45});
+      linkTrack.render(ideogramTrack);
+
+      var bedGraph1 = new C.BedGraphModel({"chr":"lnc1","start":2,"end":5,"value":10})
+	      var bedGraph3 = new C.BedGraphModel({"chr":"lnc1","start":5,"length":2,"value":5})
+	      var bedGraph4 = new C.BedGraphModel({"chr":"lnc1","start":15,"end":18,"value":5})
+	      var bedGraph2 = new C.BedGraphModel({"chr":"lnc2","start":2,"end":5,"value":5})
+	      var c = [bedGraph1,bedGraph2,bedGraph3, bedGraph4];
+	      var bedGraphTrack = new C.BedGraphTrack({"collection":c,"el":svg.append("g"),"cx":200,"cy":200,"outerRadius":100,"innerRadius":70,"color":"red"});
+	      bedGraphTrack.render(ideogramTrack);
+
+}(bam2x.circos))
+</script>
