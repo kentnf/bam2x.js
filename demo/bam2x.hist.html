@@ -1,0 +1,19 @@
+<!DOCTYPE HTML>
+<body>
+<div id="figure" class="myDiv">
+<h2> FIGURE </h2>
+<div id="canvas">
+</div>
+</div>
+</body>
+<script src="http://d3js.org/d3.v3.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script src="http://ajax.bam2x.net/bam2x.js/lib/bam2x.factory.js"></script>
+<script src="http://ajax.bam2x.net/bam2x.js/lib/bam2x.hist.js"></script>
+<script>
+  $(document).ready(function(H) {   
+var values = d3.range(1000).map(d3.random.bates(10));
+var hist = new H({values:values,height:300,width:300,binsize:10,id:"histsvg01",text:1,ticks:1})
+    hist.plot(d3.select("#canvas"));
+}(bam2x.hist))
+</script>
