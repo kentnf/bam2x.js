@@ -63,7 +63,7 @@
       "id": "http://jsonschema.net/tracks",
       "required": true,
       "items": {
-        "oneof": [
+        "oneOf": [
           {
             "type": "object",
             "id": "http://jsonschema.net/tracks/0",
