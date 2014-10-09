@@ -1,0 +1,328 @@
+{
+  "type": "object",
+  "$schema": "http://json-schema.org/draft-03/schema",
+  "id": "http://jsonschema.net",
+  "required": true,
+  "properties": {
+    "config": {
+      "type": "object",
+      "id": "http://jsonschema.net/config",
+      "required": false,
+      "properties": {
+        "gapHeight": {
+          "type": "number",
+          "id": "http://jsonschema.net/config/gapHeight",
+          "required": false
+        },
+        "plotHeight": {
+          "type": "number",
+          "id": "http://jsonschema.net/config/plotHeight",
+          "required": false
+        },
+        "bedHeight": {
+          "type": "number",
+          "id": "http://jsonschema.net/config/bedHeight",
+          "required": false
+        },
+        "outerRadius": {
+          "type": "number",
+          "id": "http://jsonschema.net/config/outerRadius",
+          "required": false
+        }
+      }
+    },
+    "ideograms": {
+      "type": "array",
+      "id": "http://jsonschema.net/ideograms",
+      "required": true,
+      "items": {
+        "type": "object",
+        "id": "http://jsonschema.net/ideograms/0",
+        "required": false,
+        "properties": {
+          "color": {
+            "type": "string",
+            "id": "http://jsonschema.net/ideograms/0/color",
+            "required": false
+          },
+          "id": {
+            "type": "string",
+            "id": "http://jsonschema.net/ideograms/0/id",
+            "required": true
+          },
+          "length": {
+            "type": "number",
+            "id": "http://jsonschema.net/ideograms/0/length",
+            "required": true
+          }
+        }
+      }
+    },
+    "tracks": {
+      "type": "array",
+      "id": "http://jsonschema.net/tracks",
+      "required": true,
+      "items": {
+        "oneof": [
+          {
+            "type": "object",
+            "id": "http://jsonschema.net/tracks/0",
+            "required": false,
+            "properties": {
+              "name": {
+                "type": "string",
+                "id": "http://jsonschema.net/tracks/0/name",
+                "required": true
+              },
+              "type": {
+                "enum": [
+                  "plot"
+                ],
+                "type": "string",
+                "id": "http://jsonschema.net/tracks/0/type",
+                "required": false
+              },
+              "values": {
+                "type": "array",
+                "id": "http://jsonschema.net/tracks/0/values",
+                "required": false,
+                "items": {
+                  "type": "object",
+                  "id": "http://jsonschema.net/tracks/0/values/0",
+                  "required": false,
+                  "properties": {
+                    "chr": {
+                      "type": "string",
+                      "id": "http://jsonschema.net/tracks/0/values/0/chr",
+                      "required": false
+                    },
+                    "color": {
+                      "type": "string",
+                      "id": "http://jsonschema.net/tracks/0/values/0/color",
+                      "required": false
+                    },
+                    "values": {
+                      "type": "array",
+                      "id": "http://jsonschema.net/tracks/0/values/0/values",
+                      "required": false,
+                      "items": {
+                        "type": "number",
+                        "id": "http://jsonschema.net/tracks/0/values/0/values/0",
+                        "required": false
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          {
+            "type": "object",
+            "id": "http://jsonschema.net/tracks/2",
+            "required": false,
+            "properties": {
+              "color": {
+                "type": "string",
+                "id": "http://jsonschema.net/tracks/2/color",
+                "required": false
+              },
+              "name": {
+                "type": "string",
+                "id": "http://jsonschema.net/tracks/2/name",
+                "required": false
+              },
+              "type": {
+                "enum": [
+                  "bedgraph"
+                ],
+                "type": "string",
+                "id": "http://jsonschema.net/tracks/2/type",
+                "required": false
+              },
+              "values": {
+                "type": "array",
+                "id": "http://jsonschema.net/tracks/2/values",
+                "required": false,
+                "items": {
+                  "type": "object",
+                  "id": "http://jsonschema.net/tracks/2/values/0",
+                  "required": false,
+                  "properties": {
+                    "chr": {
+                      "type": "string",
+                      "id": "http://jsonschema.net/tracks/2/values/0/chr",
+                      "required": false
+                    },
+                    "end": {
+                      "type": "number",
+                      "id": "http://jsonschema.net/tracks/2/values/0/end",
+                      "required": false
+                    },
+                    "start": {
+                      "type": "number",
+                      "id": "http://jsonschema.net/tracks/2/values/0/start",
+                      "required": false
+                    },
+                    "value": {
+                      "type": "number",
+                      "id": "http://jsonschema.net/tracks/2/values/0/value",
+                      "required": false
+                    }
+                  }
+                }
+              }
+            }
+          },
+          {
+            "type": "object",
+            "id": "http://jsonschema.net/tracks/3",
+            "required": false,
+            "properties": {
+              "color": {
+                "type": "string",
+                "id": "http://jsonschema.net/tracks/3/color",
+                "required": false
+              },
+              "name": {
+                "type": "string",
+                "id": "http://jsonschema.net/tracks/3/name",
+                "required": false
+              },
+              "type": {
+                "enum": [
+                  "bed"
+                ],
+                "type": "string",
+                "id": "http://jsonschema.net/tracks/3/type",
+                "required": false
+              },
+              "values": {
+                "type": "array",
+                "id": "http://jsonschema.net/tracks/3/values",
+                "required": false,
+                "items": {
+                  "type": "object",
+                  "id": "http://jsonschema.net/tracks/3/values/0",
+                  "required": false,
+                  "properties": {
+                    "chr": {
+                      "type": "string",
+                      "id": "http://jsonschema.net/tracks/3/values/0/chr",
+                      "required": false
+                    },
+                    "color": {
+                      "type": "string",
+                      "id": "http://jsonschema.net/tracks/3/values/0/color",
+                      "required": false
+                    },
+                    "end": {
+                      "type": "number",
+                      "id": "http://jsonschema.net/tracks/3/values/0/end",
+                      "required": false
+                    },
+                    "id": {
+                      "type": "string",
+                      "id": "http://jsonschema.net/tracks/3/values/0/id",
+                      "required": false
+                    },
+                    "start": {
+                      "type": "number",
+                      "id": "http://jsonschema.net/tracks/3/values/0/start",
+                      "required": false
+                    },
+                    "value": {
+                      "type": "number",
+                      "id": "http://jsonschema.net/tracks/3/values/0/value",
+                      "required": false
+                    }
+                  }
+                }
+              }
+            }
+          },
+          {
+            "type": "object",
+            "id": "http://jsonschema.net/tracks/4",
+            "required": false,
+            "properties": {
+              "color": {
+                "type": "string",
+                "id": "http://jsonschema.net/tracks/4/color",
+                "required": false
+              },
+              "name": {
+                "type": "string",
+                "id": "http://jsonschema.net/tracks/4/name",
+                "required": false
+              },
+              "type": {
+                "enum": [
+                  "links"
+                ],
+                "type": "string",
+                "id": "http://jsonschema.net/tracks/4/type",
+                "required": false
+              },
+              "values": {
+                "type": "array",
+                "id": "http://jsonschema.net/tracks/4/values",
+                "required": false,
+                "items": {
+                  "type": "object",
+                  "id": "http://jsonschema.net/tracks/4/values/0",
+                  "required": false,
+                  "properties": {
+                    "source": {
+                      "type": "object",
+                      "id": "http://jsonschema.net/tracks/4/values/0/source",
+                      "required": false,
+                      "properties": {
+                        "chr": {
+                          "type": "string",
+                          "id": "http://jsonschema.net/tracks/4/values/0/source/chr",
+                          "required": false
+                        },
+                        "end": {
+                          "type": "number",
+                          "id": "http://jsonschema.net/tracks/4/values/0/source/end",
+                          "required": false
+                        },
+                        "start": {
+                          "type": "number",
+                          "id": "http://jsonschema.net/tracks/4/values/0/source/start",
+                          "required": false
+                        }
+                      }
+                    },
+                    "target": {
+                      "type": "object",
+                      "id": "http://jsonschema.net/tracks/4/values/0/target",
+                      "required": false,
+                      "properties": {
+                        "chr": {
+                          "type": "string",
+                          "id": "http://jsonschema.net/tracks/4/values/0/target/chr",
+                          "required": false
+                        },
+                        "end": {
+                          "type": "number",
+                          "id": "http://jsonschema.net/tracks/4/values/0/target/end",
+                          "required": false
+                        },
+                        "start": {
+                          "type": "number",
+                          "id": "http://jsonschema.net/tracks/4/values/0/target/start",
+                          "required": false
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}
