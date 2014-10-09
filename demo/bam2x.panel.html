@@ -1,0 +1,26 @@
+<!DOCTYPE HTML>
+<html>
+<body>
+<div id="figure" class="myDiv">
+<h2> FIGURE </h2>
+<div id="canvas">
+</div>
+</div>
+</body>
+<script src="http://d3js.org/d3.v3.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script src="http://ajax.bam2x.net/bam2x.js/lib/bam2x.factory.js"></script>
+<script src="http://ajax.bam2x.net/bam2x.js/lib/bam2x.panel.js"></script>
+<script>
+  $(document).ready(function(P) {   
+	var svg=d3.select("#canvas").append("svg").attr("height",800).attr("width",1000);
+	var panel=new P({el:svg,"height":500,"width":500,"x":50,"y":50,"border":5,'rx':10,'ry':10,'color':'blue'});
+	var panel3=new P({"height":150,"width":150,"x":150,"y":150,"border":5,'rx':10,'ry':10,'color':'green'});
+	panel.modules=[panel3];
+	panel.render();
+	var panel2=new P({el:panel.panel,"height":50,"width":50,"x":50,"y":50,"border":5,'rx':10,'ry':10,'color':'yellow'});
+	panel2.render();
+
+}(bam2x.panel))
+</script>
+</html>
